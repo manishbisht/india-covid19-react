@@ -46,47 +46,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AccordionComponent() {
+export default function AccordionComponent({ data }) {
   const classes = useStyles();
 
   return (
-      <div className={classes.root}>
-        <Accordion defaultExpanded>
-          <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1c-content"
-              id="panel1c-header"
-          >
-            <div className={classes.column}>
-              <Typography className={classes.heading}>Location</Typography>
-            </div>
-            <div className={classes.column}>
-              <Typography className={classes.secondaryHeading}>Select trip destination</Typography>
-            </div>
-          </AccordionSummary>
-          <AccordionDetails className={classes.details}>
-            <div className={classes.column} />
-            <div className={classes.column}>
-              <Chip label="Barbados" onDelete={() => {}} />
-            </div>
-            <div className={clsx(classes.column, classes.helper)}>
-              <Typography variant="caption">
-                Select your destination of choice
-                <br />
-                <a href="#secondary-heading-and-columns" className={classes.link}>
-                  Learn more
-                </a>
-              </Typography>
-            </div>
-          </AccordionDetails>
-          <Divider />
-          <AccordionActions>
-            <Button size="small">Cancel</Button>
-            <Button size="small" color="primary">
-              Save
-            </Button>
-          </AccordionActions>
-        </Accordion>
-      </div>
+    <div className={classes.root}>
+      <Accordion defaultExpanded>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1c-content"
+          id="panel1c-header"
+        >
+          <div className={classes.column}>
+            <Typography className={classes.heading}>  {data.city}</Typography>
+          </div>
+          <div className={classes.column}>
+            <Typography className={classes.heading}>  {data.category}</Typography>
+          </div>
+          <div className={classes.column}>
+            <Typography className={classes.heading}>  {data.subCategory}</Typography>
+          </div>
+          <div className={classes.column}>
+            <Typography className={classes.secondaryHeading}>{data.name}</Typography>
+          </div>
+          <div className={classes.column}>
+            <Typography className={classes.secondaryHeading}>{data.description}</Typography>
+          </div>
+          <div className={classes.column}>
+            <Typography className={classes.secondaryHeading}>{data.address}</Typography>
+          </div>
+        </AccordionSummary>
+
+
+        <Typography>
+          <div>{classes.phone1}</div>
+          <div>{classes.phone2}</div>
+          <div>{classes.phone3}</div>
+        </Typography>
+
+
+
+
+
+
+
+        <AccordionActions>
+          <Button size="small">Close</Button>
+        </AccordionActions>
+      </Accordion>
+    </div>
   );
 }

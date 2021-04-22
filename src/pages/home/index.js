@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withGoogleSheets} from 'react-db-google-sheets';
+import { withGoogleSheets } from 'react-db-google-sheets';
 import AccordionComponent from '../../components/accordion';
 
-const Home = ({db}) => {
+const Home = ({ db }) => {
   console.log(db)
   return (
-      <div>
-        {db.Maharashtra.map(data => <AccordionComponent data={data} />)}
-      </div>
+    <div>
+      {db.Maharashtra.map(data => <AccordionComponent data={data}
+      />
+     )}
+     var x = JSON.stringify(db.Maharashtra);
+     console.log(x);
+    </div>
   )
 };
 
