@@ -1,11 +1,11 @@
-import GoogleSheetsProvider from 'react-db-google-sheets';
-import Home from './pages/home';
+import GoogleSheetsProvider from "react-db-google-sheets";
+import Home from "./pages/home";
 
 function App() {
   return (
-      <GoogleSheetsProvider>
-        <Home />
-      </GoogleSheetsProvider>
+    <GoogleSheetsProvider>
+      <Home />
+    </GoogleSheetsProvider>
   );
 }
 
