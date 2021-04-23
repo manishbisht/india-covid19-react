@@ -6,8 +6,8 @@ import { FormGroup, FormControlLabel, Checkbox } from "@material-ui/core";
 import uniqBy from "lodash.uniqby";
 import filter from "lodash.filter";
 
-const Home = ({ db }) => {
-    const stateData = db.Maharashtra;
+const Home = ({ db }) => {console.log(db)
+    const stateData = db.Rajasthan;
     const [selectedFilters, setSelectedFilters] = useState([]);
 
     const filterChange = (event) => {
@@ -65,4 +65,4 @@ Home.propTypes = {
     }),
 };
 
-export default withGoogleSheets("Maharashtra")(Home);
+export default withGoogleSheets("Rajasthan")(Home);

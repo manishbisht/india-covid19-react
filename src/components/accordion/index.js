@@ -1,104 +1,108 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionActions from "@material-ui/core/AccordionActions";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Chip from "@material-ui/core/Chip";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
-    width: "100%",
+    maxWidth: 300,
+    backgroundColor: '#ffffff',
+    display:"inline-flex"
   },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
+  bullet: {
+    display:"flex",
+    margin: '0 2px',
+    transform: 'scale(0.8)',
   },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
+  title: {
+    fontSize: 10,
   },
-  icon: {
-    verticalAlign: "bottom",
-    height: 20,
-    width: 20,
+  pos: {
+    marginBottom: 12,
   },
-  details: {
-    alignItems: "center",
-  },
-  column: {
-    flexBasis: "33.33%",
-  },
-  helper: {
-    borderLeft: `2px solid ${theme.palette.divider}`,
-    padding: theme.spacing(1, 2),
-  },
-  link: {
-    color: theme.palette.primary.main,
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
-  },
-}));
+});
 
-export default function AccordionComponent({ data }) {
+export default function SimpleCard({ data }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Accordion defaultExpanded>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1c-content"
-          id="panel1c-header"
-        >
-          <div className={classes.column}>
-            <Typography className={classes.heading}> {data.city}</Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.heading}>
-              {" "}
-              {data.category}
-            </Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.heading}>
-              {" "}
-              {data.subCategory}
-            </Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.secondaryHeading}>
-              {data.name}
-            </Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.secondaryHeading}>
-              {data.description}
-            </Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.secondaryHeading}>
-              {data.address}
-            </Typography>
-          </div>
-        </AccordionSummary>
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography variant="h5" component="h2">
+          🌆 {data.city}
 
-        <Typography>
-          <div>{data.phone1}</div>
-          <div>{data.phone2}</div>
-          <div>{data.phone3}</div>
+        </Typography>
+        <Typography variant="body2" component="p">
+          {data.category}
+
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          {data.subCategory}
         </Typography>
 
-        <AccordionActions>
-          <Button size="small">Close</Button>
-        </AccordionActions>
-      </Accordion>
-    </div>
+
+      </CardContent>
+      <CardActions>
+        <Button size="small">
+          <div> 📞 {data.phone1}</div>
+         </Button>
+      </CardActions>
+    </Card>
   );
 }
+
+
+
+//     <div className={classes.root}>
+//       <Accordion defaultExpanded>
+//         <AccordionSummary
+//           expandIcon={<ExpandMoreIcon />}
+//           aria-controls="panel1c-content"
+//           id="panel1c-header"
+//         >
+//           <div className={classes.column}>
+//             <Typography className={classes.heading}> </Typography>
+//           </div>
+//           <div className={classes.column}>
+//             <Typography className={classes.heading}>
+//               {" "}
+//               
+//             </Typography>
+//           </div>
+//           <div className={classes.column}>
+//             <Typography className={classes.heading}>
+//               {" "}
+//              
+//             </Typography>
+//           </div>
+//           <div className={classes.column}>
+//             <Typography className={classes.secondaryHeading}>
+//               {data.name}
+//             </Typography>
+//           </div>
+//           <div className={classes.column}>
+//             <Typography className={classes.secondaryHeading}>
+//               {data.description}
+//             </Typography>
+//           </div>
+//           <div className={classes.column}>
+//             <Typography className={classes.secondaryHeading}>
+//               {data.address}
+//             </Typography>
+//           </div>
+//         </AccordionSummary>
+
+//         <Typography>
+//           
+//         </Typography>
+
+//         <AccordionActions>
+//           <Button size="small">Close</Button>
+//         </AccordionActions>
+//       </Accordion>
+//     </div>
+//   );
+// }
