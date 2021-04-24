@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { withGoogleSheets } from "react-db-google-sheets";
 import AccordionComponent from "../../components/accordion";
-import { FormGroup, FormControlLabel, Checkbox } from "@material-ui/core";
+import { FormGroup, FormControlLabel, Checkbox, Grid } from "@material-ui/core";
 import uniqBy from "lodash.uniqby";
 import filter from "lodash.filter";
 
-const Home = ({ db }) => {console.log(db)
+const StateWiseDetails = ({ db }) => {
+    console.log(db);
     const stateData = db.Rajasthan;
     const [selectedFilters, setSelectedFilters] = useState([]);
 
@@ -47,22 +48,28 @@ const Home = ({ db }) => {console.log(db)
         );
     };
 
-    return (
-        <div>
-            {renderFilters()}
+    const renderList = () => (
+        <Grid container spacing={3}>
             {filter(stateData, (data) =>
                 selectedFilters.includes(data.category)
             ).map((data, index) => (
                 <AccordionComponent key={`filter-${index}`} data={data} />
             ))}
+        </Grid>
+    );
+
+    return (
+        <div>
+            {renderFilters()}
+            {renderList()}
         </div>
     );
 };
 
-Home.propTypes = {
+StateWiseDetails.propTypes = {
     db: PropTypes.shape({
         sheet1: PropTypes.arrayOf(PropTypes.object),
     }),
 };
 
-export default withGoogleSheets("Rajasthan")(Home);
+export default withGoogleSheets("Rajasthan")(StateWiseDetails);
