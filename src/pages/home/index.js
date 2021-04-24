@@ -1,23 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withGoogleSheets } from 'react-db-google-sheets';
-import AccordionComponent from '../../components/accordion';
+import React from "react";
+import covidImg from "../../assets/covid.png";
+import { MenuItem, Select } from "@material-ui/core";
+import { STATES_LIST } from "../../common/constants";
+import { useHistory } from "react-router-dom";
 
-const Home = ({ db }) => {
-  console.log(db)
-  return (
-    <div>
-      {db.Maharashtra.map(data => <AccordionComponent data={data}
-      />
-     )}
-    </div>
-  )
+const Home = () => {
+    const history = useHistory();
+    const handleStateChange = (e) => {
+        history.push(`/${e.target.value}`);
+    };
+
+    return (
+        <div>
+            <div>
+                <img src={covidImg} />
+                <Select
+                    // value={age}
+                    onChange={handleStateChange}
+                >
+                    {STATES_LIST.map((stateName) => (
+                        <MenuItem value={stateName.toLowerCase()}>
+                            {stateName}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </div>
+        </div>
+    );
 };
 
-Home.propTypes = {
-  db: PropTypes.shape({
-    sheet1: PropTypes.arrayOf(PropTypes.object)
-  })
-};
-
-export default withGoogleSheets('Maharashtra')(Home);
+export default Home;
