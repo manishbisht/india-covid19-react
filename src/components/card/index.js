@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Avatar, CardHeader, Grid, IconButton } from "@material-ui/core";
 import { Call, Language, VerifiedUser } from "@material-ui/icons";
+import { isValidURL } from "../../common/utils";
 
 const useStyles = makeStyles({
     root: {
@@ -97,7 +98,7 @@ const CardComponent = ({ data }) => {
                             {description}
                         </Typography>
                     ) : null}
-                    {phone1 || phone2 || phone3 ? (
+                    {phone1 ? (
                         <Typography
                             variant="body2"
                             color="textSecondary"
@@ -107,17 +108,17 @@ const CardComponent = ({ data }) => {
                             {phone1 ? (
                                 <a href={`tel:+91${phone1}`}>{phone1}</a>
                             ) : null}
-                            {phone2 ? (
+                            {phone2 && phone2.trim() ? (
                                 <a href={`tel:+91${phone2}`}>, {phone2}</a>
                             ) : null}
-                            {phone3 ? (
+                            {phone3 && phone3.trim() ? (
                                 <a href={`tel:+91${phone3}`}>, {phone3}</a>
                             ) : null}
                         </Typography>
                     ) : null}
                 </CardContent>
                 <CardActions disableSpacing>
-                    {sourceUrl ? (
+                    {sourceUrl && isValidURL(sourceUrl) ? (
                         <a href={sourceUrl} target="_blank">
                             <IconButton aria-label="share">
                                 <Language />
