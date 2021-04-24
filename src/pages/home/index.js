@@ -1,6 +1,5 @@
 import React from "react";
-import covidImg from "../../assets/covid.png";
-import { MenuItem, Select } from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import { STATES_LIST } from "../../common/constants";
 import { useHistory } from "react-router-dom";
 import { useCommonStyles } from "../../common/commonStyle";
@@ -8,7 +7,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
     selectContainer: {
-        width: "100%",
+        width: "80vw !important",
+        maxWidth: "500px !important",
     },
 }));
 
@@ -23,17 +23,25 @@ const Home = () => {
 
     return (
         <div className={commonClasses.mainContainer}>
-            <img src={covidImg} />
-            <Select
-                classes={{ root: classes.selectContainer }}
-                onChange={handleStateChange}
-            >
-                {STATES_LIST.map((stateName) => (
-                    <MenuItem value={stateName.toLowerCase()}>
-                        {stateName}
-                    </MenuItem>
-                ))}
-            </Select>
+            <FormControl>
+                <InputLabel id="demo-simple-select-label">
+                    Select State
+                </InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    classes={{
+                        root: classes.selectContainer,
+                    }}
+                    onChange={handleStateChange}
+                >
+                    {STATES_LIST.map((stateName) => (
+                        <MenuItem value={stateName.toLowerCase()}>
+                            {stateName}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
         </div>
     );
 };

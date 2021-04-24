@@ -2,8 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const useCommonStyles = makeStyles(() => ({
     mainContainer: {
-        minHeight: "100vh",
-        paddingTop: 64,
+        minHeight: "calc(100vh - 112px)",
+        margin: "56px 0",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
