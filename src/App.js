@@ -2,16 +2,28 @@ import GoogleSheetsProvider from "react-db-google-sheets";
 import { HashRouter, Route } from "react-router-dom";
 import Home from "./pages/home";
 import StateWiseDetails from "./pages/stateWiseDetails";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
-function App() {
+const App = () => {
     return (
-        <GoogleSheetsProvider>
+        <>
+            <Header />
             <HashRouter>
-                <Route exact path="/:stateName" component={StateWiseDetails} />
+                <Route
+                    exact
+                    path="/:stateName"
+                    render={() => (
+                        <GoogleSheetsProvider>
+                            <StateWiseDetails />
+                        </GoogleSheetsProvider>
+                    )}
+                />
                 <Route exact path="/" component={Home} />
             </HashRouter>
-        </GoogleSheetsProvider>
+            <Footer />
+        </>
     );
-}
+};
 
 export default App;

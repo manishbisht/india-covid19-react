@@ -8,6 +8,7 @@ import { STATES_LIST } from "../../common/constants";
 import { Autocomplete } from "@material-ui/lab";
 import { useParams } from "react-router-dom";
 import { capitalCase } from "../../common/utils";
+import ErrorComponent from "../../components/error";
 
 const StateWiseDetails = ({ db }) => {
     const { stateName = "" } = useParams();
@@ -42,26 +43,32 @@ const StateWiseDetails = ({ db }) => {
         );
     };
 
+    const filteredList = filter(stateData, (data) =>
+        selectedFilters.length
+            ? selectedFilters.some(
+                  (filter) => filter.category === data.category
+              )
+            : true
+    );
+
     const renderList = () => (
         <Grid container spacing={3}>
-            {filter(stateData, (data) =>
-                selectedFilters.length
-                    ? selectedFilters.some(
-                          (filter) => filter.category === data.category
-                      )
-                    : true
-            ).map((data, index) => (
+            {filteredList.map((data, index) => (
                 <AccordionComponent key={`filter-${index}`} data={data} />
             ))}
         </Grid>
     );
 
-    return (
-        <div>
-            {renderFilters()}
-            {renderList()}
-        </div>
-    );
+    if (filteredList.length) {
+        return (
+            <div>
+                {renderFilters()}
+                {renderList()}
+            </div>
+        );
+    }
+
+    return <ErrorComponent />;
 };
 
 export default withGoogleSheets(STATES_LIST)(StateWiseDetails);
