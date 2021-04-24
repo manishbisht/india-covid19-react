@@ -5,6 +5,7 @@ import AccordionComponent from "../../components/accordion";
 import { FormGroup, FormControlLabel, Checkbox, Grid } from "@material-ui/core";
 import uniqBy from "lodash.uniqby";
 import filter from "lodash.filter";
+// import { Autocomplete } from "@material-ui/lab";
 
 const StateWiseDetails = ({ db }) => {
     console.log(db);
@@ -25,6 +26,25 @@ const StateWiseDetails = ({ db }) => {
 
     const renderFilters = () => {
         const uniqueOptions = uniqBy(stateData, "category");
+
+        return (
+            <Autocomplete
+                multiple
+                id="tags-outlined"
+                options={top100Films}
+                getOptionLabel={(option) => option.title}
+                defaultValue={[top100Films[13]]}
+                filterSelectedOptions
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        variant="outlined"
+                        label="filterSelectedOptions"
+                        placeholder="Favorites"
+                    />
+                )}
+            />
+        );
 
         return (
             <FormGroup row>
