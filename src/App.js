@@ -1,10 +1,15 @@
 import GoogleSheetsProvider from "react-db-google-sheets";
-import Home from "./pages/stateWiseDetails";
+import { HashRouter, Route } from "react-router-dom";
+import Home from "./pages/home";
+import Main from "./pages/main";
 
 function App() {
     return (
         <GoogleSheetsProvider>
-            <Home />
+            <HashRouter>
+                <Route exact path="/states" component={Home} />
+                <Route exact path="/" component={Main} />
+            </HashRouter>
         </GoogleSheetsProvider>
     );
 }
