@@ -10,8 +10,6 @@ const Home = ({ db }) => {
       {db.Maharashtra.map(data => <AccordionComponent data={data}
       />
      )}
-     var x = JSON.stringify(db.Maharashtra);
-     console.log(x);
     </div>
   )
 };

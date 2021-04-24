@@ -79,9 +79,9 @@ export default function AccordionComponent({ data }) {
 
 
         <Typography>
-          <div>{classes.phone1}</div>
-          <div>{classes.phone2}</div>
-          <div>{classes.phone3}</div>
+          <div>{data.phone1}</div>
+          <div>{data.phone2}</div>
+          <div>{data.phone3}</div>
         </Typography>
 
 
