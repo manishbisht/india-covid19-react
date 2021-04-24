@@ -27,24 +27,24 @@ const StateWiseDetails = ({ db }) => {
     const renderFilters = () => {
         const uniqueOptions = uniqBy(stateData, "category");
 
-        return (
-            <Autocomplete
-                multiple
-                id="tags-outlined"
-                options={top100Films}
-                getOptionLabel={(option) => option.title}
-                defaultValue={[top100Films[13]]}
-                filterSelectedOptions
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        variant="outlined"
-                        label="filterSelectedOptions"
-                        placeholder="Favorites"
-                    />
-                )}
-            />
-        );
+        // return (
+        //     <Autocomplete
+        //         multiple
+        //         id="tags-outlined"
+        //         options={top100Films}
+        //         getOptionLabel={(option) => option.title}
+        //         defaultValue={[top100Films[13]]}
+        //         filterSelectedOptions
+        //         renderInput={(params) => (
+        //             <TextField
+        //                 {...params}
+        //                 variant="outlined"
+        //                 label="filterSelectedOptions"
+        //                 placeholder="Favorites"
+        //             />
+        //         )}
+        //     />
+        // );
 
         return (
             <FormGroup row>
