@@ -1,14 +1,15 @@
 import React from "react";
+import { CircularProgress } from "@material-ui/core";
 import { useCommonStyles } from "../../common/commonStyle";
 
-const ErrorComponent = () => {
+const Loader = () => {
     const commonClasses = useCommonStyles();
 
     return (
         <div className={commonClasses.mainContainer}>
-            This page is not available.
+            <CircularProgress />
         </div>
     );
 };
 
-export default ErrorComponent;
+export default Loader;
