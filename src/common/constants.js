@@ -1,1 +1,22 @@
-export const STATES_LIST = ["Maharashtra", "Rajasthan", "Delhi"];
+export const STATES_LIST = [
+    "Maharashtra",
+    "Rajasthan",
+    "Delhi",
+    "Karnataka",
+    "Gujarat",
+    "Tamil Nadu",
+    "Telangana",
+    "West Bengal",
+    "Bihar",
+    "Uttar Pradesh",
+    "Madhya Pradesh",
+    "Chattisgarh",
+    "Odisha",
+    "Jammu & Kashmir",
+    "Andhra Pradesh",
+    "Kerala",
+    "Uttarakhand",
+    "Punjab",
+    "Assam",
+    "Jharkhand",
+];
