@@ -6,6 +6,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Loader from "./components/loader";
 import ReactGA from "react-ga";
+import dailyUpdates from "./components/dailyUpdates";
 
 const config = {
     dataLoading: {
@@ -31,6 +32,7 @@ const App = () => {
                     )}
                 />
                 <Route exact path="/" component={Home} />
+                <Route exact path="/" component={dailyUpdates}/>
                 <Footer />
             </HashRouter>
         </>
